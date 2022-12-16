@@ -4,16 +4,14 @@
   justify-content: center;
   width: 430px;
   height: 330px;
-  position: absolute;
-  top: 43.5%;
-  left: 50%;
+  position: relative;
   background: white;
-  transform: translate(-50%, -50%);
+  /*transform: translate(-50%, -50%); */
   border-radius: 10px;
 }
 
 @media screen and (max-width: 768px) {
-  .popup__container{
+  .popup__container {
     width: 282px;
     height: 322px;
     top: 33.5%;

@@ -3,6 +3,6 @@
   display: flex;
   margin: 25px 15px 31px 21px;
   background-color: white;
-  height: 23px;
   width: calc(100% - 40px);
+  justify-content: space-between;
 }
