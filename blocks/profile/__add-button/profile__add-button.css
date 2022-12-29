@@ -1,17 +1,17 @@
 .profile__add-button {
   box-sizing: border-box;
-  border: 1px solid white;
+  border: 2px solid white;
   width: 150px;
   height: 50px;
   opacity: 1;
   transition: opacity  .3s ease;
   position: relative;
   border-radius: 2px;
-  background-color: black;
+  background-color: rgb(0, 0, 0, 0);
 }
 
 .profile__add-button:hover {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 @media screen and (max-width:768px) {

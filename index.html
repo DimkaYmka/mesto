@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Путешествие по России</title>
   <link rel="stylesheet" href="./pages/index.css">
 </head>
-
 <body class="page">
   <div class="page__container">
     <header class="header">
@@ -18,9 +16,9 @@
         <img src="./images/avatar.png" alt="аватар" class="profile__avatar">
         <div class="profile__info">
           <div class="profile__container">
-            <p class="profile__name">Жак-Ив Кусто</p>
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button class="profile__edit-button open-popup">
-              <img src="./images/Vector__edit.svg" alt="" class="profile__vector-button">
+              <img src="./images/Vector__edit.svg" alt="кнопка добавления фото" class="profile__vector-button">
             </button>
           </div>
           <p class="profile__text">Исследователь океана</p>
@@ -28,18 +26,13 @@
         <button class="profile__add-button">
           <img src="./images/Vector2.svg" alt="" class="profile__vector-button">
         </button>
-
-
-
-
       </section>
-
       <section class="elements">
         <ul class="elements__list">
           <li class="elements__card">
             <img src="./images/cherkesia.jpg" alt="Карачаево-Черкессия" class="elements__image">
             <div class="elements__container">
-              <h1 class="elements__title">Карачаево-Черкессия</h1>
+              <h2 class="elements__title">Карачаево-Черкессия</h2>
               <button class="button">
                 <img src="./images/Vector.svg" alt="лайк" class="elements__vector">
               </button>
@@ -48,7 +41,7 @@
           <li class="elements__card">
             <img src="./images/elbrus.jpg" alt="Эльбрус" class="elements__image">
             <div class="elements__container">
-              <h1 class="elements__title">Гора Эльбрус</h1>
+              <h2 class="elements__title">Гора Эльбрус</h2>
               <button class="button">
                 <img src="./images/Vector.svg" alt="лайк" class="elements__vector">
               </button>
@@ -57,7 +50,7 @@
           <li class="elements__card">
             <img src="./images/dombai.jpg" alt="Домбай" class="elements__image">
             <div class="elements__container">
-              <h1 class="elements__title">Домбай</h1>
+              <h2 class="elements__title">Домбай</h2>
               <button class="button">
                 <img src="./images/Vector.svg" alt="лайк" class="elements__vector">
               </button>
@@ -66,7 +59,7 @@
           <li class="elements__card">
             <img src="./images/cherkesia.jpg" alt="Карачаево-Черкессия" class="elements__image">
             <div class="elements__container">
-              <h1 class="elements__title">Карачаево-Черкессия</h1>
+              <h2 class="elements__title">Карачаево-Черкессия</h2>
               <button class="button">
                 <img src="./images/Vector.svg" alt="лайк" class="elements__vector">
               </button>
@@ -75,7 +68,7 @@
           <li class="elements__card">
             <img src="./images/elbrus.jpg" alt="Эльбрус" class="elements__image">
             <div class="elements__container">
-              <h1 class="elements__title">Гора Эльбрус</h1>
+              <h2 class="elements__title">Гора Эльбрус</h2>
               <button class="button">
                 <img src="./images/Vector.svg" alt="лайк" class="elements__vector">
               </button>
@@ -84,7 +77,7 @@
           <li class="elements__card">
             <img src="./images/dombai.jpg" alt="Домбай" class="elements__image">
             <div class="elements__container">
-              <h1 class="elements__title">Домбай</h1>
+              <h2 class="elements__title">Домбай</h2>
               <button class="button">
                 <img src="./images/Vector.svg" alt="лайк" class="elements__vector">
               </button>
@@ -97,16 +90,10 @@
       <p class="footer__text">© 2020 Mesto Russia</p>
     </footer>
   </div>
-
-
-
-
-
-  <section class="popup">
-
+  <div class="popup">
     <form class="popup__container">
       <img src="./images/Close.svg" alt="Крест для закрытия" class="popup__close-popup close-popup">
-      <h1 class="popup__title">Редактировать профиль</h1>
+      <h3 class="popup__title">Редактировать профиль</h3>
       <label class="popup__label">
         <input class="popup__input popup__input_name" type="text" name="name" placeholder="Ваше имя">
       </label>
@@ -115,11 +102,7 @@
       </label>
       <button class="popup__button close-popup" type="submit">Сохранить</button>
     </form>
-  </section>
-
-
+  </div>
   <script src="./scripts/index.js"></script>
-
 </body>
-
 </html>
