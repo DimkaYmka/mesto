@@ -2,7 +2,6 @@
   display: flex;
   max-width: 336px;
   align-items: baseline;
-  margin-top: 20px;
 }
 
 @media screen and (max-width: 768px) {

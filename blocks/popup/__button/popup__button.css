@@ -1,5 +1,5 @@
 .popup__button {
-  margin: 18px auto 37px;
+  margin: 48px auto 37px;
   width: 358px;
   height: 50px;
   display: flex;
@@ -18,7 +18,7 @@
   transition: opacity .3s ease;
   border-style: none;
   text-transform: none;
-  
+  cursor: pointer;
 }
 
 .popup__button:hover {
