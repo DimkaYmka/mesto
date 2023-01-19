@@ -1,8 +1,0 @@
-.elements__container {
-  position: relative;
-  display: flex;
-  margin: 25px 15px 31px 21px;
-  background-color: white;
-  width: calc(100% - 40px);
-  justify-content: space-between;
-}
