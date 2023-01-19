@@ -18,7 +18,6 @@
   transition: opacity .3s ease;
   border-style: none;
   text-transform: none;
-  cursor: pointer;
 }
 
 .popup__button:hover {
