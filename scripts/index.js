@@ -5,8 +5,8 @@ let closePopupButton = document.querySelector('.popup__close-popup');
 
 let nameInfo = document.querySelector('.profile__name');// Воспользуйтесь инструментом .querySelector()
 let jobInfo = document.querySelector('.profile__text');// Воспользуйтесь инструментом .querySelector()
-let inputName = document.querySelector('.popup__input_name');
-let inputInfo = document.querySelector('.popup__input_info');
+let inputName = document.querySelector('.input-name');
+let inputInfo = document.querySelector('.input-info');
 
 function closePopup() {
   popup.classList.remove('popup_opened');
