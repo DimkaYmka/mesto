@@ -1,12 +1,12 @@
 let popup = document.querySelector('.popup'); 
-let popupContainer = document.querySelector('.popup__container'); 
+let popupForm = document.querySelector('.popup__form'); 
 let openPopupButton = document.querySelector('.profile__edit-button'); // Кнопки для показа окна
 let closePopupButton = document.querySelector('.popup__close-popup');
 
 let nameInfo = document.querySelector('.profile__name');// Воспользуйтесь инструментом .querySelector()
 let jobInfo = document.querySelector('.profile__text');// Воспользуйтесь инструментом .querySelector()
-let inputName = document.querySelector('.input-name');
-let inputInfo = document.querySelector('.input-info');
+let inputName = document.querySelector('#input-name');
+let inputInfo = document.querySelector('#input-info');
 
 function closePopup() {
   popup.classList.remove('popup_opened');
@@ -30,7 +30,7 @@ openPopupButton.addEventListener('click', (e) => { // Для каждой веш
 //   });
 
 
-popupContainer.addEventListener('submit', handleFormSubmit); 
+popupForm.addEventListener('submit', handleFormSubmit); 
 
 
 function handleFormSubmit (evt) {

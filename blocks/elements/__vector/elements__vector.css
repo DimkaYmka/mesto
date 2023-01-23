@@ -10,4 +10,5 @@
   bottom: 30px;
   border: none;
   transition: opacity .3s ease-in;
+  cursor: pointer;
 }

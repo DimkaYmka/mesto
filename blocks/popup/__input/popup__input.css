@@ -12,3 +12,24 @@
   line-height: 17px;
   padding: 9px 0;
 }
+
+/* .popup__input:nth-child(odd) {
+  margin-top: 39px;
+}
+
+@media screen and (max-width: 768px) {
+  .popup__input:nth-child(odd) {
+    margin-top: 70px;
+  }
+}
+
+.popup__input:nth-child(even) {
+  margin-top: 21px;
+
+}
+
+@media screen and (max-width: 768px) {
+  .popup__input:nth-child(even) {
+    margin-top: 15px;
+  }
+} */
