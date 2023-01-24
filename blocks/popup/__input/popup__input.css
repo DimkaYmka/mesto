@@ -13,13 +13,14 @@
   padding: 9px 0;
 }
 
-/* .popup__input:nth-child(odd) {
+.popup__input:nth-child(odd) {
   margin-top: 39px;
 }
 
 @media screen and (max-width: 768px) {
   .popup__input:nth-child(odd) {
-    margin-top: 70px;
+    margin-top: 67px;
+    width: 238px;
   }
 }
 
@@ -30,6 +31,7 @@
 
 @media screen and (max-width: 768px) {
   .popup__input:nth-child(even) {
-    margin-top: 15px;
+    margin-top: 22px;
+    width: 238px;
   }
-} */
+}

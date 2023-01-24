@@ -1,12 +1,23 @@
-let popup = document.querySelector('.popup'); 
-let popupForm = document.querySelector('.popup__form'); 
-let openPopupButton = document.querySelector('.profile__edit-button'); // Кнопки для показа окна
-let closePopupButton = document.querySelector('.popup__close-popup');
+const popup = document.querySelector('.popup'); 
+const popupForm = document.querySelector('.popup__form'); 
+const openPopupButton = document.querySelector('.profile__edit-button'); // Кнопки для показа окна
+const buttonClosePopupButton = document.querySelector('.popup__close-popup');
 
-let nameInfo = document.querySelector('.profile__name');// Воспользуйтесь инструментом .querySelector()
-let jobInfo = document.querySelector('.profile__text');// Воспользуйтесь инструментом .querySelector()
-let inputName = document.querySelector('#input-name');
-let inputInfo = document.querySelector('#input-info');
+const nameInfo = document.querySelector('.profile__name');// Воспользуйтесь инструментом .querySelector()
+const jobInfo = document.querySelector('.profile__text');// Воспользуйтесь инструментом .querySelector()
+const inputName = document.querySelector('#input-name');
+const inputInfo = document.querySelector('#input-info');
+
+//
+const like = document.querySelector('.elements__vector');
+
+// function likeAdd() {
+//   like.classList.add('elements__vector_active');
+// }
+//
+
+
+
 
 function closePopup() {
   popup.classList.remove('popup_opened');
@@ -20,7 +31,7 @@ openPopupButton.addEventListener('click', (e) => { // Для каждой веш
      // popupContainer.classList.add('popup_opened'); // И для самого окна
   })
 
-  closePopupButton.addEventListener('click',closePopup) ;
+  buttonClosePopupButton.addEventListener('click',closePopup) ;
 
 //document.addEventListener('click', (e) => { // Вешаем обработчик на весь документ
  // if(e.target === popup) { // Если цель клика - фот, то:
@@ -40,3 +51,7 @@ function handleFormSubmit (evt) {
     closePopup();
 
 }
+
+
+
+
