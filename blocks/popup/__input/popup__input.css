@@ -1,4 +1,6 @@
 .popup__input {
+  /* margin-bottom: 30px;*/
+  display: flex;
   margin: 0 auto;
   margin-top: 0px;
   width: 358px;
