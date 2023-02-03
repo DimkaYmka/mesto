@@ -148,7 +148,7 @@ const addCard = (event) => {
 
 //добавление карточки
 const renderCard = (name, link) => {
-  cardsConteiner.append(createNewCard(name, link));
+  cardsConteiner.prepend(createNewCard(name, link));
 };
 
 // вставляем карточки из массива
