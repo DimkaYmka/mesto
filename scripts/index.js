@@ -87,16 +87,6 @@ openProfileButtton.addEventListener('click', () => {
 });
 
 
-// //Слушатель на закрытие профиля
-// buttonCloseAddCardPopup.addEventListener('click', () => {
-//   closePopup(cardPopup);
-// });
-
-//Слушатель на закрытие большой карточки
-// popupBigClose.addEventListener('click', () => {
-//   closePopup(bigPopup);
-// });
-
 //сабмит для профиля
 function handleProfileFormSubmit(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
@@ -162,12 +152,18 @@ initialCards.forEach ((element) => {
 //закрытие формы по нажатию на фон
 const popupsFon = Array.from(document.querySelectorAll('.popup'));
 
-PopupsFon.forEach(popup => {                                            
-  popup.addEventListener('click', (evt) => {
-    if (evt.currentTarget === evt.target)
-    closePopup(popup);
-  });
-});
+
+popupsFon.forEach((popup) => {
+    // слушатель клика
+    popup.addEventListener('click', (evt) => {
+      if(evt.target.classList.contains('popup_opened')){
+        closePopup(popup);
+      }
+    })
+  })
+
+
+
 
 
 
