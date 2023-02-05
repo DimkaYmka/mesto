@@ -106,7 +106,7 @@ function handleProfileFormSubmit(evt) {
 
 }
 //Слушатель на сабмит для профиля
-profileForm.addEventListener('submit', handleProfileFormSubmit);  //
+profileForm.addEventListener('submit', handleProfileFormSubmit);  
 
 //добавление и удаление лайка
 const toggleLike = (e) => {
@@ -126,13 +126,13 @@ const createNewCard = (name, link) => {
   newCard.querySelector('.elements__vector').addEventListener('click', toggleLike);
 
   //удалениe карточки 
-  const deleteCard = newCard.querySelector('.elements__delete-button');    //
+  const deleteCard = newCard.querySelector('.elements__delete-button');    
   deleteCard.addEventListener('click', () => {
     newCard.remove();
   });
 
   //большая картинка
-  elementsImage.addEventListener('click', () => {     //
+  elementsImage.addEventListener('click', () => {     
     openImagePopup(link, name);
   });
 
@@ -154,21 +154,21 @@ const renderCard = (name, link) => {
 };
 
 // вставляем карточки из массива
-initialCards.forEach ((element) => {                                      //
+initialCards.forEach ((element) => {                                      
   renderCard(element.name, element.link);
 });
 
 
-// //закрытие формы по нажатию на фон
-// const popupsFon = Array.from(document.querySelectorAll('.popup'));
+//закрытие формы по нажатию на фон
+const popupsFon = Array.from(document.querySelectorAll('.popup'));
 
-// PopupsFon.forEach(popup => {                                            //
-//   popup.addEventListener('click', (evt) => {
-//     if (evt.currentTarget === evt.target)
-//     closePopup(popup);
-//   });
-// });
+PopupsFon.forEach(popup => {                                            
+  popup.addEventListener('click', (evt) => {
+    if (evt.currentTarget === evt.target)
+    closePopup(popup);
+  });
+});
 
 
 
-// enableValidation(formSetting);
+enableValidation(formSetting);

@@ -45,9 +45,11 @@
         <img src="./images/Close.svg" alt="Крест для закрытия" class="popup__close-popup">
       </button>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form name="form" class="popup__form">
-        <input class="popup__input" id="input-name" type="text" name="name" placeholder="Ваше имя">
-        <input class="popup__input" id="input-info" type="text" name="job" placeholder="Пара слов о себе">
+      <form name="form" class="popup__form" novalidate>
+        <input class="popup__input" id="input-name" minlength="2" maxlength="40" required type="text" name="name" placeholder="Ваше имя">
+        <span class="popup__input-error input-name-error"></span>
+        <input class="popup__input" id="input-info" minlength="2" maxlength="200" required type="text" name="job" placeholder="Пара слов о себе">
+        <span class="popup__input-error input-info-error"></span>
         <button class="popup__button" type="submit">Сохранить</button>
       </form>
     </div>
@@ -58,9 +60,11 @@
         <img src="./images/Close.svg" alt="Крест для закрытия" class="popup__close-popup popup__close-card-popup">
       </button>
       <h3 class="popup__title">Новое место</h3>
-      <form name="form" class="popup__form popup__form-card">
-        <input class="popup__input popup__input-name"  type="text" name="name" placeholder="Название">
-        <input class="popup__input popup__input-link"  type="text" name="job" placeholder="Ссылка">
+      <form name="form" class="popup__form popup__form-card" novalidate>
+        <input id="input-name-card" class="popup__input popup__input-name" minlength="1" maxlength="30" required type="text" name="name" placeholder="Название">
+        <span class="popup__input-error input-name-card-error"></span>
+        <input id="input-url" class="popup__input popup__input-link"  type="url" name="job" placeholder="Ссылка">
+        <span class="popup__input-error input-url-error"></span>
         <button class="popup__button" type="submit">Создать</button>
       </form>
     </div>
@@ -89,8 +93,9 @@
     </li>
   </template>
   <script src="./scripts/cards.js"></script>
+  <script src="./scripts/validation.js"></script>
   <script src="./scripts/index.js"></script>
-
+  
 
 </body>
 

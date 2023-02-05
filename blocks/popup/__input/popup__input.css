@@ -2,7 +2,6 @@
   /* margin-bottom: 30px;*/
   display: flex;
   margin: 0 auto;
-  margin-top: 0px;
   width: 358px;
   border: none;
   outline: none;
@@ -12,28 +11,28 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  padding: 9px 0;
+  padding: 0 0 9px;
 }
 
-.popup__input:nth-child(odd) {
+/* .popup__input:nth-child(odd) {
   margin-top: 39px;
-}
+} */
 
 @media screen and (max-width: 768px) {
   .popup__input:nth-child(odd) {
-    margin-top: 67px;
+    /* margin-top: 67px; */
     width: 238px;
   }
 }
 
-.popup__input:nth-child(even) {
+/* .popup__input:nth-child(even) {
   margin-top: 21px;
 
-}
+} */
 
 @media screen and (max-width: 768px) {
   .popup__input:nth-child(even) {
-    margin-top: 22px;
+    /* margin-top: 22px; */
     width: 238px;
   }
 }
