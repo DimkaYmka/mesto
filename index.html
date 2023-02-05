@@ -46,9 +46,9 @@
       </button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form name="form" class="popup__form" novalidate>
-        <input class="popup__input" id="input-name" minlength="2" maxlength="40" required type="text" name="name" placeholder="Ваше имя">
+        <input class="popup__input" id="input-name" minlength="1" maxlength="40" required type="text" name="name" placeholder="Ваше имя">
         <span class="popup__input-error input-name-error"></span>
-        <input class="popup__input" id="input-info" minlength="2" maxlength="200" required type="text" name="job" placeholder="Пара слов о себе">
+        <input class="popup__input" id="input-info" minlength="1" maxlength="200" required type="text" name="job" placeholder="Пара слов о себе">
         <span class="popup__input-error input-info-error"></span>
         <button class="popup__button" type="submit">Сохранить</button>
       </form>
@@ -65,7 +65,7 @@
         <span class="popup__input-error input-name-card-error"></span>
         <input id="input-url" class="popup__input popup__input-link"  type="url" name="job" placeholder="Ссылка">
         <span class="popup__input-error input-url-error"></span>
-        <button class="popup__button" type="submit">Создать</button>
+        <button class="popup__button popup__save-btn" type="submit">Создать</button>
       </form>
     </div>
   </div>

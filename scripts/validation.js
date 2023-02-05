@@ -54,13 +54,17 @@ const setEventListeners = (formElement, formSetting) => {
   });
 };
 
-
+function disabledButton (formElement, formSetting) {
+  const buttonElement = formElement.querySelector(formSetting.submitButtonSelector);
+  buttonElement.classList.add(formSetting.inactiveButtonClass);
+  buttonElement.setAttribute('disabled', 'disabled');
+}
 
 const enableValidation = (formSetting) => {
   const formList = Array.from(document.querySelectorAll(formSetting.formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
-      evt.preventDefault();
+      disabledButton (formElement, formSetting)
     });
 
     setEventListeners(formElement, formSetting);
