@@ -1,7 +1,7 @@
 const formSetting = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save-btn',
+  submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__save-btn_inactive',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active'
@@ -40,8 +40,8 @@ const checkInputValidity = (formElement, inputElement, formSetting) => {
 
 
 const setEventListeners = (formElement, formSetting) => {
-  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
-  const buttonElement = formElement.querySelector('.popup__button');
+  const inputList = Array.from(formElement.querySelectorAll(formSetting.inputSelector));
+  const buttonElement = formElement.querySelector(formSetting.submitButtonSelector);
 
   // чтобы проверить состояние кнопки в самом начале
   toggleButtonState(inputList, buttonElement);
@@ -54,21 +54,17 @@ const setEventListeners = (formElement, formSetting) => {
   });
 };
 
-function disabledButton (formElement, formSetting) {
-  const buttonElement = formElement.querySelector(formSetting.submitButtonSelector);
-  buttonElement.classList.add(formSetting.inactiveButtonClass);
-  buttonElement.setAttribute('disabled', 'disabled');
-}
+
 
 const enableValidation = (formSetting) => {
   const formList = Array.from(document.querySelectorAll(formSetting.formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
-      disabledButton (formElement, formSetting)
+      evt.preventDefault();
     });
 
     setEventListeners(formElement, formSetting);
-    const fieldsetList = Array.from(formElement.querySelectorAll('.form__set'));
+    const fieldsetList = Array.from(formElement.querySelectorAll(formSetting.formSelector));
     fieldsetList.forEach((fieldSet) => {
       setEventListeners(fieldSet);
     });
@@ -85,11 +81,11 @@ const enableValidation = (formSetting) => {
 function toggleButtonState (inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {
   // сделай кнопку неактивной
-  buttonElement.classList.add('popup__save-btn_inactive');
+  buttonElement.classList.add(formSetting.inactiveButtonClass);
   buttonElement.disabled = true;
 } else {
   // иначе сделай кнопку активной
-  buttonElement.classList.remove('popup__save-btn_inactive');
+  buttonElement.classList.remove(formSetting.inactiveButtonClass);
   buttonElement.disabled = false;
 }
 }
