@@ -44,7 +44,7 @@ const setEventListeners = (formElement, formSetting) => {
   const buttonElement = formElement.querySelector(formSetting.submitButtonSelector);
 
   // чтобы проверить состояние кнопки в самом начале
-  toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement, formSetting);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
@@ -78,7 +78,7 @@ const enableValidation = (formSetting) => {
 
 
 
-function toggleButtonState (inputList, buttonElement) {
+function toggleButtonState (inputList, buttonElement, formSetting) {
   if (hasInvalidInput(inputList)) {
   // сделай кнопку неактивной
   buttonElement.classList.add(formSetting.inactiveButtonClass);
