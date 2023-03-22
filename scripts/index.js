@@ -5,6 +5,7 @@ import { FormValidation, formSetting } from "./validation.js";
 
 
 const popups = document.querySelectorAll('.popup');
+const forms = document.querySelectorAll('.popup__form')
 const popupProfile = document.querySelector('.popup_profile')
 const profileForm = document.querySelector('.popup__form');
 const openProfileButtton = document.querySelector('.profile__edit-button'); // Кнопки для показа окна
@@ -168,18 +169,17 @@ popupsFon.forEach((popup) => {
       }
     })
   })
-  // const formSetting = {
-  //   formSelector: '.popup__form',
-  //   inputSelector: '.popup__input',
-  //   submitButtonSelector: '.popup__button',
-  //   inactiveButtonClass: 'popup__save-btn_inactive',
-  //   inputErrorClass: 'popup__input_type_error',
-  //   errorClass: 'popup__input-error_active'
-  // };
 
 
+console.log(document.forms);
   // //
-  const formValidation = new FormValidation(formSetting, form);
-  formValidation.enableValidation(formSetting);
+  forms.forEach((formElement) => {
+    formElement.addEventListener('submit', (e) => {
+      e.preventDefault();
+    })
+  
+    const form = new FormValidation(formSetting, formElement)
+    form.enableValidation();
+  })
 
 export { openImagePopup }

@@ -95,36 +95,41 @@
 const formSetting = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
+  submitButtonSelector: '.popup__save-btn',
   inactiveButtonClass: 'popup__save-btn_inactive',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active'
 };
 
 class FormValidation {
-  constructor(formSetting, form) {
+  constructor(formSetting, formElement) {
+    console.log(formElement);
     this._formSetting = formSetting;
-    this._formElement = document.querySelector(this._formSetting.formSelector);
+    this._formElement = formElement
+  
     this._inputList = Array.from(this._formElement.querySelectorAll(this._formSetting.inputSelector));
-    this._buttonElement = this._formElement.querySelector(this._formSetting.submitButtonSelector);
-    this._inputName = document.querySelector('#input-name');
-    this._inputInfo = document.querySelector('#input-info');
-    this._popupImageName = document.querySelector('.popup__input-name');
-    this._popupImageLink = document.querySelector('.popup__input-link');
+    this._submitButton = this._formElement.querySelector(this._formSetting.submitButtonSelector);
+    // this._inputName = document.querySelector('#input-name');
+    // this._inputInfo = document.querySelector('#input-info');
+    // this._popupImageName = document.querySelector('.popup__input-name');
+    // this._popupImageLink = document.querySelector('.popup__input-link');
   }
 //
   _showInputError(inputElement, errorMessage) {
-    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+    console.log(inputElement);
+    const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(this._formSetting.inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._formSetting.errorClass);
   }
 //
   _hideInputError(inputElement) {
-    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+    console.log(inputElement);
+    const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
     errorElement.textContent = '';
     inputElement.classList.remove(this._formSetting.inputErrorClass);
     errorElement.classList.remove(this._formSetting.errorClass);
+  
   }
 //
   _checkInputValidity(inputElement) {
@@ -136,12 +141,15 @@ class FormValidation {
   }
 //
   _toggleButtonState() {
+    console.log(this._hasInvalidInput());
+    
     if (this._hasInvalidInput()) {
-      this._buttonElement.classList.add(this._formSetting.inactiveButtonClass);
-      this._buttonElement.disabled = true;
+      console.log(this._submitButton);
+      this._submitButton.classList.add(this._formSetting.inactiveButtonClass);
+      this._submitButton.disabled = true;
     } else {
-      this._buttonElement.classList.remove(this._formSetting.inactiveButtonClass);
-      this._buttonElement.disabled = false;
+      this._submitButton.classList.remove(this._formSetting.inactiveButtonClass);
+      this._submitButton.disabled = false;
     }
   }
 //
@@ -174,6 +182,7 @@ class FormValidation {
 
 
 }
+
 
 
 
