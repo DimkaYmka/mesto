@@ -17,6 +17,7 @@ class FormValidator {
     this._inputList = Array.from(this._formElement.querySelectorAll(this._formSetting.inputSelector));
     this._submitButton = this._formElement.querySelector(this._formSetting.submitButtonSelector);
   }
+  
 //
   _showInputError(inputElement, errorMessage) {
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
@@ -42,6 +43,7 @@ class FormValidator {
   }
 //
   _toggleButtonState() {
+    
     if (this._hasInvalidInput()) {
       this._submitButton.classList.add(this._formSetting.inactiveButtonClass);
       this._submitButton.disabled = true;
@@ -52,6 +54,7 @@ class FormValidator {
   }
 //
   _hasInvalidInput() {
+    console.log(this._inputList);
     return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });

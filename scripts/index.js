@@ -1,5 +1,5 @@
-import  {Card, config, initialCards} from "./cards.js";
-import { FormValidator, formSetting } from "./validation.js";
+import { Card, config, initialCards } from "./Card.js";
+import { FormValidator, formSetting } from "./FormValidator.js";
 
 
 const popups = document.querySelectorAll('.popup');
@@ -23,6 +23,17 @@ const popupImageLink = document.querySelector('.popup__input-link');
 const bigImage = document.querySelector('.popup__big-image');
 const bigTitle = document.querySelector('.popup__big-title');
 const cardImage = document.querySelector('.popup_image')
+const cardTemplate = document.querySelector('#card');
+
+const formEditProfile = document.querySelector(".popup__form-profile");
+const formAddCard = document.querySelector(".popup__form-card");
+
+
+const validatorProfileForm = new FormValidator(formSetting, formEditProfile);
+  validatorProfileForm.enableValidation()
+  const validatorCardForm = new FormValidator(formSetting, formAddCard);
+  validatorCardForm.enableValidation()
+
 
 
 //открытие попапа
@@ -35,7 +46,7 @@ function openPopup(popupElement) {
 //закрытие попапа
 function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
-   document.removeEventListener('keydown', closePopupEscape);
+  document.removeEventListener('keydown', closePopupEscape);
 };
 
 //закрытие формы по esc
@@ -48,10 +59,10 @@ function closePopupEscape(evt) {
 
 //открытие большой картинки
 
-function openImagePopup (img, name) {
+function openImagePopup(img, name) {
   bigImage.src = img.src;
   bigImage.alt = `${name}.`;
-  bigTitle.textContent = name; 
+  bigTitle.textContent = name;
   openPopup(cardImage)
 };
 
@@ -59,18 +70,17 @@ function openImagePopup (img, name) {
 
 
 // универсальная функция закрытия попапов
-const closeButtons = document.querySelectorAll('.popup__close-popup');
 
-closeButtons.forEach((button) => {
-  // находим 1 раз ближайший к крестику попап 
-  const popup = button.closest('.popup');
-  // устанавливаем обработчик закрытия на крестик
-  button.addEventListener('click', () => closePopup(popup));
-});
-
+const cleanInput = () => {
+  const getInput = document.getElementById("input-name-card");
+  const getInputUrl = document.getElementById("input-url");
+  getInput.value = ''; 
+  getInputUrl.value = '';                      
+}
 
 //Слушатель на открытие добавления карточек
-openCardButton.addEventListener('click', () => { 
+openCardButton.addEventListener('click', () => {
+  cleanInput();
   openPopup(cardPopup)
 });
 
@@ -92,12 +102,9 @@ function handleProfileFormSubmit(evt) {
 
 }
 //Слушатель на сабмит для профиля
-profileForm.addEventListener('submit', handleProfileFormSubmit);  
+profileForm.addEventListener('submit', handleProfileFormSubmit);
 
-//добавление и удаление лайка
-const toggleLike = (e) => {
-  e.target.classList.toggle('elements__vector_active');
-};
+
 
 
 //Добавление своей карточки
@@ -108,42 +115,55 @@ const addCard = (event) => {
   closePopup(cardPopup);
 }
 //Слушатель на сабмит для добавления карточки
- addCardForm.addEventListener('submit', addCard);
+addCardForm.addEventListener('submit', addCard);
 
-//добавление карточки
-const renderCard = (name, link) => {
-  const card = new Card(name, link, config);
-  cardsConteiner.prepend(card.createNewCard());
+function createCard(name, link) {
+  const newCard = cardTemplate.content.querySelector('.elements__card').cloneNode(true);
+
+  newCard.querySelector('.elements__title').textContent = name;
+  const elementsImage = newCard.querySelector('.elements__image');
+  elementsImage.src = link;
+  elementsImage.alt = name;
+ 
+  return newCard;
 };
 
+
+const renderCard = (name, link) => {
+  const card = createCard(name, link)
+  cardsConteiner.prepend(card);
+};
+
+
+
 // вставляем карточки из массива
-initialCards.forEach ((element) => {                                      
+initialCards.forEach((element) => {
   renderCard(element.name, element.link);
 });
 
 
-//закрытие формы по нажатию на фон
-const popupsFon = Array.from(document.querySelectorAll('.popup'));
+//закрытие формы по нажатию 
 
 
-popupsFon.forEach((popup) => {
-    // слушатель клика
-    popup.addEventListener('click', (evt) => {
-      if(evt.target.classList.contains('popup_opened')){
-        closePopup(popup);
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup_opened')) {
+          closePopup(popup)
       }
-    })
+      if (evt.target.classList.contains('popup__close-popup')) {
+        closePopup(popup)
+      }
   })
+})
 
 
-  // //
-  forms.forEach((formElement) => {
-    formElement.addEventListener('submit', (e) => {
-      e.preventDefault();
-    })
-  
-    const form = new FormValidator(formSetting, formElement)
-    form.enableValidation();
+
+// //
+forms.forEach((formElement) => {
+  formElement.addEventListener('submit', (e) => {
+    e.preventDefault();
   })
+
+})
 
 export { openImagePopup }

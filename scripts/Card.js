@@ -92,9 +92,10 @@ class Card {
   //Добавление своей карточки
   createNewCard() {
     this._element = this._getTemplate();
+    this._cardImage = this._element.querySelector(this._config.cardImgSelector);
 
-    this._element.querySelector(this._config.cardImgSelector).src = this._link;
-    this._element.querySelector(this._config.cardImgSelector).alt = ` ${this._link}.`;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = ` ${this._link}.`;
     this._element.querySelector(this._config.cardTitleSelector).textContent = this._name;
 
     this._setEventListeners();
