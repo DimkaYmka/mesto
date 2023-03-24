@@ -40,6 +40,8 @@ const validatorProfileForm = new FormValidator(formSetting, formEditProfile);
 function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEscape);
+  validatorProfileForm.resetValidation();
+  validatorCardForm.resetValidation();
 };
 
 
@@ -112,6 +114,7 @@ const addCard = (event) => {
   event.preventDefault()
   renderCard(popupImageName.value, popupImageLink.value);
   event.target.reset();
+  validatorCardForm.disableSubmit();
   closePopup(cardPopup);
 }
 //Слушатель на сабмит для добавления карточки
