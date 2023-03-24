@@ -91,9 +91,7 @@ class FormValidator {
     this._setEventListeners();
   }
 
-  disableSubmit() {
-    this._toggleButtonState()
-  }
+
 }
 
 
