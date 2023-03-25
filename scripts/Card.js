@@ -43,11 +43,13 @@ class Card {
     this._name = name;
     this._link = link;
     this._config = config
+
   }
 
 
   //Добавление своей карточки
   _getTemplate() {
+  
     const newCard = document
       .querySelector(this._config.selectorTemplate)
       .content

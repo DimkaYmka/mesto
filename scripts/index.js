@@ -28,6 +28,9 @@ const cardTemplate = document.querySelector('#card');
 const formEditProfile = document.querySelector(".popup__form-profile");
 const formAddCard = document.querySelector(".popup__form-card");
 
+const getInput = document.getElementById("input-name-card");
+const getInputUrl = document.getElementById("input-url");
+
 
 const validatorProfileForm = new FormValidator(formSetting, formEditProfile);
   validatorProfileForm.enableValidation()
@@ -40,8 +43,8 @@ const validatorProfileForm = new FormValidator(formSetting, formEditProfile);
 function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEscape);
-  validatorProfileForm.resetValidation();
-  validatorCardForm.resetValidation();
+  // validatorProfileForm.resetValidation();
+  // validatorCardForm.resetValidation();
 };
 
 
@@ -74,8 +77,6 @@ function openImagePopup(img, name) {
 // универсальная функция закрытия попапов
 
 const cleanInput = () => {
-  const getInput = document.getElementById("input-name-card");
-  const getInputUrl = document.getElementById("input-url");
   getInput.value = ''; 
   getInputUrl.value = '';                      
 }
@@ -83,6 +84,7 @@ const cleanInput = () => {
 //Слушатель на открытие добавления карточек
 openCardButton.addEventListener('click', () => {
   cleanInput();
+  validatorCardForm.resetValidation();
   openPopup(cardPopup)
 });
 
@@ -91,6 +93,7 @@ openCardButton.addEventListener('click', () => {
 openProfileButtton.addEventListener('click', () => {
   inputName.value = nameInfo.textContent;
   inputInfo.value = jobInfo.textContent;
+  validatorProfileForm.resetValidation();
   openPopup(popupProfile)
 });
 
@@ -114,26 +117,21 @@ const addCard = (event) => {
   event.preventDefault()
   renderCard(popupImageName.value, popupImageLink.value);
   event.target.reset();
-  validatorCardForm.disableSubmit();
+  // validatorCardForm.disableSubmit();
   closePopup(cardPopup);
 }
 //Слушатель на сабмит для добавления карточки
 addCardForm.addEventListener('submit', addCard);
 
-function createCard(name, link) {
-  const newCard = cardTemplate.content.querySelector('.elements__card').cloneNode(true);
-
-  newCard.querySelector('.elements__title').textContent = name;
-  const elementsImage = newCard.querySelector('.elements__image');
-  elementsImage.src = link;
-  elementsImage.alt = name;
+function createCard(name, link, config) {
+  const newCard = new Card(name, link, config)
  
-  return newCard;
+  return newCard.createNewCard();
 };
 
 
 const renderCard = (name, link) => {
-  const card = createCard(name, link)
+  const card = createCard(name, link, config)
   cardsConteiner.prepend(card);
 };
 
