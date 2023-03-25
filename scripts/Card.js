@@ -75,14 +75,13 @@ class Card {
   // слушатели на добавление лайка, удаление карточки и открытие фото
   _setEventListeners() {
     const deleteCard = this._element.querySelector(this._config.cardDeleteBtnSelector);
-    const elementsImage = this._element.querySelector(this._config.cardImgSelector);
     const elementsLike = this._element.querySelector(this._config.toggleLikeSelector);
 
     deleteCard.addEventListener('click', () => {
       this._deleteCard(deleteCard)
     })
 
-    elementsImage.addEventListener('click', () => {
+    this._cardImage.addEventListener('click', () => {
       openImagePopup(elementsImage, this._name);
     })
 
