@@ -82,7 +82,7 @@ class Card {
     })
 
     this._cardImage.addEventListener('click', () => {
-      openImagePopup(elementsImage, this._name);
+      openImagePopup(this._cardImage, this._name);
     })
 
     elementsLike.addEventListener('click', () => {
