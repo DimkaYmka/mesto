@@ -1,4 +1,4 @@
-import { openImagePopup } from './index.js'
+// import { openImagePopup } from './index.js'
 
 const initialCards = [
   {
@@ -39,11 +39,12 @@ const config = {
 }
 //Класс
 class Card {
-  constructor(name, link, config) {
+  constructor(name, link, config, handleCardClick) {
     this._name = name;
     this._link = link;
     this._config = config
-
+    this._handleCardClick = handleCardClick;
+    
   }
 
 
@@ -82,7 +83,7 @@ class Card {
     })
 
     this._cardImage.addEventListener('click', () => {
-      openImagePopup(this._cardImage, this._name);
+      this._handleCardClick(this._name, this._link)
     })
 
     elementsLike.addEventListener('click', () => {

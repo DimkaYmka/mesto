@@ -42,7 +42,7 @@
   <div class="popup popup_profile">
     <div class="popup__container">
       <button class="button" type="button">
-        <img src="./images/Close.svg" alt="Крест для закрытия" class="popup__close-popup">
+        <img src="<%=require('./images/Close.svg')%>" alt="Крест для закрытия" class="popup__close-popup">
       </button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form name="form" class="popup__form popup__form-profile" novalidate>
@@ -82,7 +82,7 @@
 
   <template class="card" id="card">
     <li class="elements__card">
-      <img src="#" alt="" class="elements__image">
+      <img src="data:," alt="" class="elements__image">
       <button class="button" type="button">
         <img src="<%=require('./images/Trash.svg')%>" alt="лайк" class="elements__delete-button">
       </button>
@@ -92,7 +92,7 @@
       </button>
     </li>
   </template>
-  <script src="./scripts/index.js"  type="module"></script>
+  <!-- <script src="./scripts/index.js"  type="module"></script> -->
   
 </body>
 
