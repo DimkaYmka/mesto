@@ -11,7 +11,7 @@ export class UserInfo {
     getUserInfo() {
       return {
         name: this._name.textContent,
-        info: this._job.textContent,
+        info: this._info.textContent,
       };
     }
   

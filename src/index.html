@@ -48,7 +48,7 @@
       <form name="form" class="popup__form popup__form-profile" novalidate>
         <input class="popup__input" id="input-name" minlength="2" maxlength="40" required type="text" name="name" placeholder="Ваше имя">
         <span class="popup__input-error input-name-error"></span>
-        <input class="popup__input" id="input-info" minlength="2" maxlength="200" required type="text" name="job" placeholder="Пара слов о себе">
+        <input class="popup__input" id="input-info" minlength="2" maxlength="200" required type="text" name="info" placeholder="Пара слов о себе">
         <span class="popup__input-error input-info-error"></span>
         <button class="popup__button popup__save-btn" type="submit">Сохранить</button>
       </form>
@@ -63,7 +63,7 @@
       <form name="form" class="popup__form popup__form-card" novalidate>
         <input id="input-name-card" class="popup__input popup__input-name" minlength="2" maxlength="30" required type="text" name="name" placeholder="Название">
         <span class="popup__input-error input-name-card-error"></span>
-        <input id="input-url" class="popup__input popup__input-link" required type="url" name="job" placeholder="Ссылка">
+        <input id="input-url" class="popup__input popup__input-link" required type="url" name="link" placeholder="Ссылка">
         <span class="popup__input-error input-url-error"></span>
         <button class="popup__button popup__save-btn" type="submit">Создать</button>
       </form>
@@ -82,7 +82,7 @@
 
   <template class="card" id="card">
     <li class="elements__card">
-      <img src="data:," alt="" class="elements__image">
+      <img src="#" alt="" class="elements__image">
       <button class="button" type="button">
         <img src="<%=require('./images/Trash.svg')%>" alt="лайк" class="elements__delete-button">
       </button>

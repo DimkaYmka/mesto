@@ -1,8 +1,3 @@
-// const popupSelector = {
-//     profilePopup: '.popup_profile',
-//     cardsPopup: '.popup_card',
-//     imgPopup: '.popup_image'
-// }
 
 export class Popup {
     constructor(popupSelector) {

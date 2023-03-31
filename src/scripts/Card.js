@@ -1,4 +1,3 @@
-// import { openImagePopup } from './index.js'
 
 const initialCards = [
   {
