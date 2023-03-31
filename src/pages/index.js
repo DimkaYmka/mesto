@@ -75,8 +75,11 @@ const profilePopup = new PopupWithForm(profilePopupSelector,
 
 //Слушатель на открытие для профиля
 openProfileButtton.addEventListener('click', () => {
-  inputName.value = nameInfo.textContent;
-  inputInfo.value = jobInfo.textContent;
+  // inputName.value = nameInfo.textContent;
+  // inputInfo.value = jobInfo.textContent;
+  const infoObject = userData.getUserInfo();
+  inputName.value = infoObject.name;
+  inputInfo.value = infoObject.info; 
   validatorProfileForm.resetValidation();
   profilePopup.open()
 });
@@ -93,7 +96,6 @@ const addCardPopup = new PopupWithForm(
 
 // слушатель на открытие попапа card
 openCardButton.addEventListener('click', () => {
-  cleanInput();
   addCardPopup.open();
   validatorCardForm.resetValidation();
 });
@@ -110,12 +112,7 @@ function createCard(item) {
   return new Card(item.name, item.link, config, handleCardClick);
 }
 
-forms.forEach((formElement) => {
-  formElement.addEventListener('submit', (e) => {
-    e.preventDefault();
-  })
 
-})
 
 
 // обработчики событий попапов
