@@ -1,30 +1,5 @@
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+
 
 //Селектор класса
 const config = {
@@ -34,16 +9,23 @@ const config = {
   cardTitleSelector: '.elements__title',
   cardDeleteBtnSelector: '.elements__delete-button',
   toggleLikeSelector: '.elements__vector',
-  activeLikeBtnClass: 'elements__vector_active'
+  activeLikeBtnClass: 'elements__vector_active',
+  countLikes: '.elements__likes-number'
 }
 //Класс
 class Card {
-  constructor(name, link, config, handleCardClick) {
-    this._name = name;
-    this._link = link;
-    this._config = config
+  constructor(cardData, config, handleCardClick, userId, {handleLikeCard}, {handleDeleteCard}) {
+    this._cardData = cardData;
+    this._name = cardData.name;
+    this._link = cardData.link;
+    this._config = config;
     this._handleCardClick = handleCardClick;
     
+    this._userId = userId;
+    this._handleLikeCard = handleLikeCard;
+    this._likes = cardData.likes
+    this._handleDeleteCard = handleDeleteCard;
+    this._cardOwner = cardData.owner._id;
   }
 
 
@@ -59,12 +41,13 @@ class Card {
     return newCard;
   }
 
-  
+  _deleteCardForSure = () => {
+   this._handleDeleteCard(this._cardData, this)
+  }
 
   //удалениe карточки 
-  _deleteCard(deleteCard) {
-    //  this._element.remove()
-    deleteCard.closest(this._config.selectorList).remove()
+  deleteCard() {  
+     this._element.remove()
   }
 
   //добавление лайка
@@ -78,7 +61,7 @@ class Card {
     const elementsLike = this._element.querySelector(this._config.toggleLikeSelector);
 
     deleteCard.addEventListener('click', () => {
-      this._deleteCard(deleteCard)
+      this._deleteCardForSure()
     })
 
     this._cardImage.addEventListener('click', () => {
@@ -86,7 +69,7 @@ class Card {
     })
 
     elementsLike.addEventListener('click', () => {
-      this._toggleLike(elementsLike);
+      this._handleLikeCard(this._cardData);
     })
   }
 
@@ -99,13 +82,50 @@ class Card {
     this._cardImage.alt = ` ${this._link}.`;
     this._element.querySelector(this._config.cardTitleSelector).textContent = this._name;
 
+    this._likeButton = this._element.querySelector(this._config.toggleLikeSelector);
+    this._likeNumber = this._element.querySelector(this._config.countLikes);
+
+    this._likes = this._cardData.likes;
+    this._likeNumber.innerHTML = this._likes.length;
+   
+    this.isLiked = false;
+   
+    this._deleteButton = this._element.querySelector(this._config.cardDeleteBtnSelector); 
+    this._setDeleteButton();
+
     this._setEventListeners();
 
+    this._getCardLike();
+    this.getLikesNumber(this._likes.length);
     return this._element;
+
+    
   }
 
 
+  _getCardLike = () => {
+    if (this._likes.some(liker => liker._id === this._userId)) {
+      this._likeButton.classList.add('elements__vector_active');
+      this.isLiked = true;
+    }
+    else {
+      this._likeButton.classList.remove('elements__vector_active');
+    }
+  }
+
+  getLikesNumber = (likesNumber) => {
+    this._likeNumber.innerHTML = likesNumber;
+  }
+
+  likeCard = () => {
+    this._likeButton.classList.toggle('elements__vector_active');
+  }
+  _setDeleteButton = () => {
+    if (this._cardOwner === this._userId) {
+      this._deleteButton.classList.remove('elements__delete-button_hidden');
+    }
+  }
 
 };
 
-export { Card, config, initialCards }
+export { Card, config}
