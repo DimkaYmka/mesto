@@ -21,6 +21,7 @@ class FormValidator {
   //
   _showInputError(inputElement, errorMessage) {
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+    // console.log(errorElement);
     inputElement.classList.add(this._formSetting.inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._formSetting.errorClass);
@@ -28,6 +29,7 @@ class FormValidator {
   //
   _hideInputError(inputElement) {
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+    // console.log(errorElement);
     errorElement.textContent = '';
     inputElement.classList.remove(this._formSetting.inputErrorClass);
     errorElement.classList.remove(this._formSetting.errorClass);
