@@ -16,7 +16,7 @@ export class PopupWithApply extends Popup {
     this._form.addEventListener('submit', (e) => {
       e.preventDefault();
       this._handleProfileFormSubmit();
-      this.close();
+      // this.close();
     });
   }
 }

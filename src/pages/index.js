@@ -1,14 +1,14 @@
-import { Card, config} from "../scripts/Card.js";
-import { FormValidator, formSetting } from "../scripts/FormValidator.js";
-import { Section } from '../scripts/Section.js';
-import { Popup } from '../scripts/Popup.js';
-import { PopupWithImage } from '../scripts/PopupWithImage.js';
-import { PopupWithForm } from '../scripts/PopupWithForm.js';
-import { UserInfo } from '../scripts/UserInfo.js';
-import { Api } from '../scripts/Api.js';
+import { Card, config} from "../components/Card.js";
+import { FormValidator, formSetting } from "../components/FormValidator.js";
+import { Section } from '../components/Section.js';
+import { Popup } from '../components/Popup.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
+import { UserInfo } from '../components/UserInfo.js';
+import { Api } from '../components/Api.js';
 import '../pages/index.css';
-import { PopupWithApply } from "../scripts/PopupWithApply.js";
-
+import { PopupWithApply } from "../components/PopupWithApply.js";
+import {showLoadingText} from "../utils/utils.js";
 
 const openProfileButtton = document.querySelector('.profile__edit-button'); // Кнопки для показа окна
 const inputName = document.querySelector('#input-name');
@@ -63,13 +63,13 @@ let userId;
 
 
 
-const data = {
+const dataProfile = {
   profileNameSelector: '.profile__name',
   profileInfoSelector: '.profile__text',
   avatarSelector: '.profile__avatar'
 }
 
-const userData = new UserInfo(data);
+const userData = new UserInfo(dataProfile);
 const imagePopup = new PopupWithImage(imagePopupSelector);
 const popupWithApply = new PopupWithApply('.popup_delete');
 
@@ -107,19 +107,20 @@ const profilePopup = new PopupWithForm(profilePopupSelector,
     api.editUserData(userInfo)
       .then((res) => {
         userData.setUserInfo(res);
-      })
-
-      .then(() => {
         profilePopup.close();
       })
+
+      // .then(() => {
+      //   profilePopup.close();
+      // })
       .catch((err) => {alert(err)
-        userData.setUserInfo(userInfo)
+        // userData.setUserInfo(userInfo)
       })
     
     .finally(() => {
       showLoadingText(btnForm, btnFormInitialText)
     })
-  }, btnFormSelector);// profileSubmitHandler);
+  }, btnFormSelector);
 
 
 //Слушатель на открытие для профиля
@@ -195,10 +196,11 @@ function createCard(cardData) {
           api.deleteCard(data._id)
           .then(() => {
             card.deleteCard();
-          })
-          .then(() => {
             popupWithApply.close();
           })
+          // .then(() => {
+          //   popupWithApply.close();
+          // })
           .catch((err) => {
             console.log(err);
           });
@@ -235,9 +237,7 @@ avatar.addEventListener('click', () => {
   avatarPopup.open();
 });
 
-function showLoadingText(btnForm, text) {
-  btnForm.textContent = text;
-}
+
 
 function handleCardClick(name, link) {
   imagePopup.open(name, link);
