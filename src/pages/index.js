@@ -138,7 +138,7 @@ function profileDataSet (){
   validatorProfileForm.resetValidation();
   profilePopup.open()
 };
-openProfileButtton.addEventListener('click', (profileDataSet));
+openProfileButtton.addEventListener('click', profileDataSet);
 
 
 // сабмита для карточек
