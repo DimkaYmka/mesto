@@ -124,13 +124,22 @@ const profilePopup = new PopupWithForm(profilePopupSelector,
 
 
 //Слушатель на открытие для профиля
-openProfileButtton.addEventListener('click', () => {
+// openProfileButtton.addEventListener('click', () => {
+//   const infoObject = userData.getUserInfo();
+//   inputName.value = infoObject.name;
+//   inputInfo.value = infoObject.info;
+//   validatorProfileForm.resetValidation();
+//   profilePopup.open()
+// });
+function profileDataSet (){
   const infoObject = userData.getUserInfo();
   inputName.value = infoObject.name;
   inputInfo.value = infoObject.info;
   validatorProfileForm.resetValidation();
   profilePopup.open()
-});
+};
+openProfileButtton.addEventListener('click', (profileDataSet));
+
 
 // сабмита для карточек
 const addCardPopup = new PopupWithForm(
